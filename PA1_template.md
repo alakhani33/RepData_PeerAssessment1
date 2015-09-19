@@ -1,13 +1,8 @@
----
-title: "Reproducible Research: Peer Assessment 1"
-output: 
-  html_document:
-    keep_md: true
----
+# Reproducible Research: Peer Assessment 1
 
 
-## Loading and preprocessing the data.  (echo=FALSE hides the R code.  results='hide' hides the output.  warning=FALSE suppresses the warnings.  message=FALSE suppresses the messages.)
-##### 1. Loading the requisite libraries (ggplot2, scales, Hmisc), if they don't already exist.  Hmisc: Harrell Miscellaneous contains many functions useful for data analysis, high-level graphics, utility operations, functions for computing sample size and power, importing and annotating datasets, imputing missing values, advanced table making, variable clustering, character string manipulation, conversion of R objects to LaTeX code, and recoding variables.
+## Loading and preprocessing the data
+##### 1. Loading requisite libraries if they don't already exist
 
 
 ##### 2. Unzipping then loading the given activity data using read.csv().  (results = 'markup' displays the output.  warning=TRUE and message=TRUE ensure warnings and messages are also displayed.)
@@ -41,7 +36,7 @@ sum_of_steps_per_day <- tapply(given_activity_data$steps, given_activity_data$da
 qplot(sum_of_steps_per_day, xlab='Total number of steps per day', ylab='Frequency using a binwidth of 500', binwidth=500)
 ```
 
-![plot of chunk unnamed-chunk-5](figure/unnamed-chunk-5-1.png) 
+![](PA1_template_files/figure-html/unnamed-chunk-5-1.png) 
 
 ##### 3. Computing the mean and median of the total number of steps taken per day
 
@@ -70,7 +65,7 @@ ggplot(data=average_steps_per_timeblock, aes(x=interval, y=mean_of_steps)) +
     ylab("Average number of steps taken in the given interval") 
 ```
 
-![plot of chunk unnamed-chunk-8](figure/unnamed-chunk-8-1.png) 
+![](PA1_template_files/figure-html/unnamed-chunk-8-1.png) 
 
 ##### 2. Figuring out which 5-minute interval, on average across all the days in the dataset, contains the maximum number of steps
 
@@ -108,7 +103,7 @@ steps_by_day_after_data_imputation <- tapply(imputed_activity_data$steps, impute
 qplot(steps_by_day_after_data_imputation, xlab='Total steps per day (Imputed)', ylab='Frequency using binwith 500', binwidth=500)
 ```
 
-![plot of chunk unnamed-chunk-12](figure/unnamed-chunk-12-1.png) 
+![](PA1_template_files/figure-html/unnamed-chunk-12-1.png) 
 
 ##### 5. Calculating the mean and median total number of steps taken per day using imputed data
 
@@ -117,7 +112,7 @@ mean_steps_by_day_after_data_imputation <- mean(steps_by_day_after_data_imputati
 median_steps_by_day_after_data_imputation <- median(steps_by_day_after_data_imputation)
 ```
 * Mean (Imputed): 9354.2295082
-* Median (Imputed):  1.0395 &times; 10<sup>4</sup>
+* Median (Imputed):  1.0395\times 10^{4}
 
 
 ----
@@ -141,4 +136,4 @@ ggplot(averaged_imputed_data, aes(interval, steps)) +
     ylab("Average number of steps per given interval")
 ```
 
-![plot of chunk unnamed-chunk-15](figure/unnamed-chunk-15-1.png) 
+![](PA1_template_files/figure-html/unnamed-chunk-15-1.png) 

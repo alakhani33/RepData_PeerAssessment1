@@ -6,8 +6,8 @@ output:
 ---
 
 
-## Loading and preprocessing the data.  (echo=FALSE hides the R code.  results='hide' hides the output.  warning=FALSE suppresses the warnings.  message=FALSE suppresses the messages.)
-##### 1. Loading the requisite libraries (ggplot2, scales, Hmisc), if they don't already exist.  Hmisc: Harrell Miscellaneous contains many functions useful for data analysis, high-level graphics, utility operations, functions for computing sample size and power, importing and annotating datasets, imputing missing values, advanced table making, variable clustering, character string manipulation, conversion of R objects to LaTeX code, and recoding variables.
+## Loading and preprocessing the data
+##### 1. Loading requisite libraries if they don't already exist
 ```{r, echo=FALSE, results='hide', warning=FALSE, message=FALSE}
 
 #Install "ggplot2", "scales", and Hmisc packages if they are not already installed
