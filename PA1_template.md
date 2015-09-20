@@ -2,22 +2,35 @@
 
 
 ## Loading and preprocessing the data
-##### 1. Loading requisite libraries if they don't already exist
+##### 1. Installing and loading requisite libraries if they don't already exist
 
+```r
+if (!("ggplot2" %in% rownames(installed.packages())) ) {
+  install.packages("ggplot2")
+} else {
+  library(ggplot2)
+}
 
-##### 2. Unzipping then loading the given activity data using read.csv().  (results = 'markup' displays the output.  warning=TRUE and message=TRUE ensure warnings and messages are also displayed.)
+if (!("scales" %in% rownames(installed.packages())) ) {
+  install.packages("scales")
+} else {
+  library(scales)
+}
+
+if (!("Hmisc" %in% rownames(installed.packages())) ) {
+  install.packages("Hmisc")
+} else {
+  library(Hmisc)
+}
+```
+
+##### 2. Unzipping, then loading the given activity data using read.csv().  
 
 ```r
 if(!file.exists('activity.csv')){
     unzip('activity.zip')
 }
 given_activity_data <- read.csv('activity.csv')
-```
-
-##### 3. Reformatting the time data into Hour-Minute format to suit the analysis.  Commenting out code below as it results in an "Error in complete.cases(by) : invalid 'type' (list) of argument" error later.
-
-```r
-#given_activity_data$interval <- strptime(gsub("([0-9]{1,2})([0-9]{2})", "\\1:\\2", given_activity_data$interval), format='%H:%M')
 ```
 
 -----
@@ -36,7 +49,7 @@ sum_of_steps_per_day <- tapply(given_activity_data$steps, given_activity_data$da
 qplot(sum_of_steps_per_day, xlab='Total number of steps per day', ylab='Frequency using a binwidth of 500', binwidth=500)
 ```
 
-![](PA1_template_files/figure-html/unnamed-chunk-5-1.png) 
+![](PA1_template_files/figure-html/unnamed-chunk-4-1.png) 
 
 ##### 3. Computing the mean and median of the total number of steps taken per day
 
@@ -65,7 +78,7 @@ ggplot(data=average_steps_per_timeblock, aes(x=interval, y=mean_of_steps)) +
     ylab("Average number of steps taken in the given interval") 
 ```
 
-![](PA1_template_files/figure-html/unnamed-chunk-8-1.png) 
+![](PA1_template_files/figure-html/unnamed-chunk-7-1.png) 
 
 ##### 2. Figuring out which 5-minute interval, on average across all the days in the dataset, contains the maximum number of steps
 
@@ -103,7 +116,7 @@ steps_by_day_after_data_imputation <- tapply(imputed_activity_data$steps, impute
 qplot(steps_by_day_after_data_imputation, xlab='Total steps per day (Imputed)', ylab='Frequency using binwith 500', binwidth=500)
 ```
 
-![](PA1_template_files/figure-html/unnamed-chunk-12-1.png) 
+![](PA1_template_files/figure-html/unnamed-chunk-11-1.png) 
 
 ##### 5. Calculating the mean and median total number of steps taken per day using imputed data
 
@@ -136,4 +149,4 @@ ggplot(averaged_imputed_data, aes(interval, steps)) +
     ylab("Average number of steps per given interval")
 ```
 
-![](PA1_template_files/figure-html/unnamed-chunk-15-1.png) 
+![](PA1_template_files/figure-html/unnamed-chunk-14-1.png) 

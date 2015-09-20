@@ -66,19 +66,32 @@ img {
 
 <div id="loading-and-preprocessing-the-data" class="section level2">
 <h2>Loading and preprocessing the data</h2>
-<div id="loading-requisite-libraries-if-they-dont-already-exist" class="section level5">
-<h5>1. Loading requisite libraries if they don’t already exist</h5>
+<div id="installing-and-loading-requisite-libraries-if-they-dont-already-exist" class="section level5">
+<h5>1. Installing and loading requisite libraries if they don’t already exist</h5>
+<pre class="r"><code>if (!(&quot;ggplot2&quot; %in% rownames(installed.packages())) ) {
+  install.packages(&quot;ggplot2&quot;)
+} else {
+  library(ggplot2)
+}
+
+if (!(&quot;scales&quot; %in% rownames(installed.packages())) ) {
+  install.packages(&quot;scales&quot;)
+} else {
+  library(scales)
+}
+
+if (!(&quot;Hmisc&quot; %in% rownames(installed.packages())) ) {
+  install.packages(&quot;Hmisc&quot;)
+} else {
+  library(Hmisc)
+}</code></pre>
 </div>
-<div id="unzipping-then-loading-the-given-activity-data-using-read.csv.-results-markup-displays-the-output.-warningtrue-and-messagetrue-ensure-warnings-and-messages-are-also-displayed." class="section level5">
-<h5>2. Unzipping then loading the given activity data using read.csv(). (results = ‘markup’ displays the output. warning=TRUE and message=TRUE ensure warnings and messages are also displayed.)</h5>
+<div id="unzipping-then-loading-the-given-activity-data-using-read.csv." class="section level5">
+<h5>2. Unzipping, then loading the given activity data using read.csv().</h5>
 <pre class="r"><code>if(!file.exists('activity.csv')){
     unzip('activity.zip')
 }
 given_activity_data &lt;- read.csv('activity.csv')</code></pre>
-</div>
-<div id="reformatting-the-time-data-into-hour-minute-format-to-suit-the-analysis.-commenting-out-code-below-as-it-results-in-an-error-in-complete.casesby-invalid-type-list-of-argument-error-later." class="section level5">
-<h5>3. Reformatting the time data into Hour-Minute format to suit the analysis. Commenting out code below as it results in an “Error in complete.cases(by) : invalid ‘type’ (list) of argument” error later.</h5>
-<pre class="r"><code>#given_activity_data$interval &lt;- strptime(gsub(&quot;([0-9]{1,2})([0-9]{2})&quot;, &quot;\\1:\\2&quot;, given_activity_data$interval), format='%H:%M')</code></pre>
 <hr />
 </div>
 </div>
